@@ -39,3 +39,29 @@ if (false || null || undefined || "" || 0 || NaN){
 if (true && "hello" && 1 && -1 && "false"){
 	console.log("All true");
 }
+
+// Best practice for {} style
+function a()
+{
+	return
+	{
+		name: "Yaakov"
+	};
+}
+
+function b(){
+	return{
+		name: "Yaakov"
+	};
+}
+
+console.log(a());
+console.log(b());
+
+// for loop
+var sum = 0;
+for (var i=0; i <10; i++){
+	console.log(i);
+	sum += i;
+}
+console.log("Sum of first 9 numbers is " + sum);
