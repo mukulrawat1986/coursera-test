@@ -1,45 +1,54 @@
-// functions are first class data types
-// functions are objects
-// whatever you can do with a variable or an 
-// object can be done with the functions.
-function multiply(x, y){
-	return x * y;
+// copy by reference vs by value
+// var a = 7;
+// var b = a;
+// console.log("a: " + a);
+// console.log("b: " + b);
+
+// b = 5;
+// console.log("after b updates");
+// console.log("a: " + a);
+// console.log("b: " + b);
+
+// pass by reference
+var a = {x: 7};
+var b = a;
+console.log(a);
+console.log(b);
+
+b.x = 5;
+console.log("after b.x update");
+console.log(a);
+console.log(b);
+
+// pass by reference vs by value
+function changePrimitive(primValue){
+	console.log("in changePrimitive...");
+	console.log("before: ");
+	console.log(primValue);
+
+	primValue = 5;
+	console.log("after: ");
+	console.log(primValue);
 }
 
-console.log(multiply(5, 3));
-multiply.version = "v.1.0.0";
-console.log(multiply);
+var value = 7;
+changePrimitive(value);
+console.log("after changePrimitive, orig value:");
+console.log(value);
 
-// every object has a inherent method to it called
-// toString() which helps in printing out the object
-// as a string
-console.log(multiply.toString);
-console.log(multiply.toString());
-console.log(multiply.version);
+function changeObject(objValue){
+	console.log("in changeObject....");
+	console.log("Before: ");
+	console.log(objValue);
 
-// function factory
-function makeMultiplier(multiplier){
-	var myFunc = function(x){
-		return multiplier * x;
-	};
-
-	return myFunc;
+	objValue.x = 5;
+	console.log("after: ");
+	console.log(objValue);
 }
 
-// 
-var multiplyBy3 = makeMultiplier(3);
-console.log(multiplyBy3(10));
-
-var doubleAll = makeMultiplier(2);
-console.log(doubleAll(100));
-
-// passing function as arguments
-function doOperationOn(x, operation){
-	return operation(x);
-}
-
-var result = doOperationOn(5, multiplyBy3);
-console.log(result);
-
-result = doOperationOn(100, doubleAll);
-console.log(result);
+value1 = {
+	x: 7
+};
+changeObject(value1);
+console.log("after changeObject, orig value:");
+console.log(value1);
