@@ -1,9 +1,23 @@
-// this points to the global window object
+// function constructors
+function Circle(radius){
+	//console.log(this);
+	this.radius = radius;
 
-function test(){
-	console.log(this);
-	// added a property to the global window object
-	this.myName = "Mukul";
+	// this.getArea = 
+	// 	function(){
+	// 		return Math.Pi * Math.Pow(this.radius, 2);
+	// 	};
 }
-test();
-console.log(window.myName);
+
+Circle.prototype.getArea = 
+	function(){
+		return Math.Pi * Math.Pow(this.radius, 2);
+	};
+
+
+var myCircle = new Circle(10); // new Object();
+console.log(myCircle);
+
+var myNewCircle = new Circle(20);
+console.log(myNewCircle);
+
