@@ -1,23 +1,27 @@
-// function constructors
-function Circle(radius){
-	//console.log(this);
-	this.radius = radius;
+// Object literals and "this"
+var literalCircle = {
+	radius: 10,
 
-	// this.getArea = 
-	// 	function(){
-	// 		return Math.Pi * Math.Pow(this.radius, 2);
-	// 	};
-}
+	getArea: function(){
+		var self = this;
+		console.log(this);
 
-Circle.prototype.getArea = 
-	function(){
-		return Math.Pi * Math.Pow(this.radius, 2);
-	};
+		// bug using this inside another function
+		// when not using self
+		var increaseRadius = 
+			function(){
+				// when used without self, this 
+				// will refer to external window
+				// object
+				// this.radius = 20;
+				self.radius = 20;
+			};
 
+		increaseRadius();
+		console.log(this.radius);
 
-var myCircle = new Circle(10); // new Object();
-console.log(myCircle);
+		return Math.PI * Math.pow(this.radius, 2);
+	}
+};
 
-var myNewCircle = new Circle(20);
-console.log(myNewCircle);
-
+console.log(literalCircle.getArea());
